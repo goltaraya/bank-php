@@ -13,4 +13,4 @@ $umDiretor = new Diretor(
     1000.0
 );
 
-echo $autenticador->tentaLogin($umDiretor, "1234");
+echo $autenticador->tentaLogin($umDiretor, "4321");
