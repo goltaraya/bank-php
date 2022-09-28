@@ -3,36 +3,37 @@
 require_once 'autoload.php';
 
 use Alura\Banco\Modelo\CPF;
-use Alura\Banco\Modelo\Funcionario\{Desenvolvedor, Gerente, Diretor};
+use Alura\Banco\Modelo\Funcionario\{Desenvolvedor, Gerente, Diretor, EditorDeVideo};
 use Alura\Banco\Service\ControladorDeBonificacoes;
 
-$funcionarioYago = new Desenvolvedor(
+$desenvolvedorYago = new Desenvolvedor(
     "Yago Alexandre",
     new CPF("031.011.321-83"),
-    "Desenvolvedor Júnior",
     3000.0
 );
+
+$desenvolvedorYago->sobeNivel();
 
 $gerenteJuliana = new Gerente(
     "Juliana Reis",
     new CPF("912.021.888-14"),
-    "Analista Júnior",
     5000.0
 );
 
 $diretorLuiz = new Diretor(
     "Luiz Fellipe",
     new CPF("123.872.011-92"),
-    "Diretor Pleno",
     10000.0
 );
 
-$controladorBonificacao = new ControladorDeBonificacoes();
-$controladorBonificacao->adicionaBonificacoes($funcionarioYago);
-$funcionarioYago->sobeNivel();
-// $controladorBonificacao->adicionaBonificacoes($gerenteJuliana);
-// $controladorBonificacao->adicionaBonificacoes($diretorLuiz);
+$editorJohnny = new EditorDeVideo(
+    "Johnny Carvalho",
+    new CPF("943.102.942-02"),
+    3000.
+);
 
-echo "Total de bonificações: R$" . $controladorBonificacao->recuperaTotal() . PHP_EOL;
-$controladorBonificacao->adicionaBonificacoes($funcionarioYago);
+$controladorBonificacao = new ControladorDeBonificacoes();
+$controladorBonificacao->adicionaBonificacoes($desenvolvedorYago);
+$controladorBonificacao->adicionaBonificacoes($editorJohnny);
+
 echo "Total de bonificações: R$" . $controladorBonificacao->recuperaTotal() . PHP_EOL;
