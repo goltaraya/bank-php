@@ -16,8 +16,11 @@ namespace Alura\Banco\Modelo;
  * @property-write string $numero 
  */
 
-class Endereco
+ final class Endereco
 {
+
+    use AcessoPropriedades;
+
     private $cidade;
     private $bairro;
     private $rua;
@@ -61,12 +64,6 @@ class Endereco
             . ", "
             . $this->recuperaCidade()
             . PHP_EOL;
-    }
-
-    public function __get(string $nomeAtributo)
-    {
-        $metodo = "recupera" . ucfirst($nomeAtributo);
-        return $this->$metodo();
     }
 
     public function __set(string $nomeAtributo, string $novoAtributo)
